@@ -1,6 +1,6 @@
 import random
  
-from bke import MLAgent, is_winner, opponent, RandomAgent, train_and_plot
+from bke import MLAgent, is_winner, opponent, RandomAgent, train_and_plot, save, train, load, start
  
  
 class MyAgent(MLAgent):
@@ -13,7 +13,7 @@ class MyAgent(MLAgent):
             reward = 0
         return reward
 
-def train():
+def plot():
   random.seed(1)
    
   my_agent = MyAgent(alpha=0.8, epsilon=0.2)
@@ -25,7 +25,22 @@ def train():
       iterations=50,
       trainings=100,
       validations=1000)
+
+def trainOnly():
+  my_agent = MyAgent()
   
+  train(my_agent, 3000)
+  save(my_agent, 'MyAgent_3000')
+
+def slimmetegenst():
+  my_agent = load('MyAgent_3000')
+  my_agent.learning = False
+  start(player_x=my_agent)
+
+def dommetegenst():
+  
+  
+
 print("1: Tegen een ander persoon spelen ")
 print("2: Tegen een domme tegenstander spelen")
 print("3: De tegenstander trainen")
@@ -35,10 +50,12 @@ print("5: Je programma kan de validatie grafiek plotten")
 i = input()
 
 if i == "5":
-  train()
+  plot()
 
-if i == "b":
-  # doe dat andere
-  aap = ""
+if i == "3":
+  trainOnly()
+
+if i == "4":
+  slimmetegenst()
 
 
