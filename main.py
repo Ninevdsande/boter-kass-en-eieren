@@ -44,6 +44,9 @@ def slimmetegenst():
 def dommetegenst():
   my_random_agent = MyRandomAgent()
   start(player_o=my_random_agent)
+
+def anderpersoon():
+  start()
   
 
 print("1: Tegen een ander persoon spelen ")
@@ -54,8 +57,12 @@ print("5: Je programma kan de validatie grafiek plotten")
 
 i = input()
 
-if i == "5":
-  plot()
+
+if i == "1":
+  anderpersoon()
+
+if i == "2":
+  dommetegenst()
 
 if i == "3":
   trainOnly()
@@ -63,6 +70,5 @@ if i == "3":
 if i == "4":
   slimmetegenst()
 
-if i == "2":
-  dommetegenst()
-
+if i == "5":
+  plot()
