@@ -1,6 +1,6 @@
 import random
  
-from bke import MLAgent, is_winner, opponent, RandomAgent, train_and_plot, save, train, load, start
+from bke import MLAgent, is_winner, opponent, RandomAgent, train_and_plot, save, train, load, start, EvaluationAgent
  
  
 class MyAgent(MLAgent):
@@ -12,6 +12,10 @@ class MyAgent(MLAgent):
         else:
             reward = 0
         return reward
+
+class MyRandomAgent(EvaluationAgent):
+  def evaluate(self, board, my_symbol, opponent_symbol):
+    return random.randint(1,500)
 
 def plot():
   random.seed(1)
@@ -38,7 +42,8 @@ def slimmetegenst():
   start(player_x=my_agent)
 
 def dommetegenst():
-  
+  my_random_agent = MyRandomAgent()
+  start(player_o=my_random_agent)
   
 
 print("1: Tegen een ander persoon spelen ")
@@ -58,4 +63,6 @@ if i == "3":
 if i == "4":
   slimmetegenst()
 
+if i == "2":
+  dommetegenst()
 
